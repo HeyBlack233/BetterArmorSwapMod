@@ -1,6 +1,6 @@
 # Warning!!!
 
-This mod might be incompatible with other mod, might have issue that causes crashes, might be considered as cheating on some server with anticheat system.
+This mod might be incompatible with other mod, might have issue that causes crashes, might be considered as cheating on some server with anticheat system. **USE AT YOUR OWN RISK**
 
 ------
 
