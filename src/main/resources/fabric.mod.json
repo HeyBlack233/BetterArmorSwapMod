@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "betterarmorswap",
+  "version": "${version}",
+  "name": "BetterArmorSwap",
+  "description": "backport and enhancement of armor swapping introduced in 1.19.4",
+  "authors": [],
+  "contact": {
+    "sources": "https://github.com/HeyBlack233/BetterArmorSwapMod"
+  },
+  "license": "MIT",
+  "icon": "assets/icon.png",
+  "environment": "client",
+  "mixins": [
+    "BetterArmorSwap.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "minecraft": ">=1.16"
+  }
+}
