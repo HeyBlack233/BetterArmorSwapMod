@@ -4,7 +4,9 @@
   "version": "${version}",
   "name": "BetterArmorSwap",
   "description": "backport and enhancement of armor swapping introduced in 1.19.4",
-  "authors": [],
+  "authors": [
+    "HeyBlack"
+  ],
   "contact": {
     "sources": "https://github.com/HeyBlack233/BetterArmorSwapMod"
   },
@@ -16,6 +18,6 @@
   ],
   "depends": {
     "fabricloader": "*",
-    "minecraft": ">=1.16"
+    "minecraft": "1.16.5"
   }
 }
