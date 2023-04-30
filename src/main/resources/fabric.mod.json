@@ -3,7 +3,7 @@
   "id": "betterarmorswap",
   "version": "${version}",
   "name": "BetterArmorSwap",
-  "description": "backport and enhancement of armor swapping introduced in 1.19.4",
+  "description": "enhancement of armor swapping",
   "authors": [
     "HeyBlack"
   ],
@@ -18,6 +18,6 @@
   ],
   "depends": {
     "fabricloader": "*",
-    "minecraft": "1.16.5"
+    "minecraft": "1.19.4"
   }
 }
