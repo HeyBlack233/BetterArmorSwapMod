@@ -13,16 +13,16 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Environment(EnvType.CLIENT)
 @Mixin(ClientPlayerInteractionManager.class)
 public abstract class ClientPlayerInteractionManagerMixin
 {
-    @Shadow public abstract ItemStack clickSlot(int syncId, int slotId, int clickData, SlotActionType actionType, PlayerEntity player);
+    @Shadow public abstract void clickSlot(int syncId, int slotId, int button, SlotActionType actionType, PlayerEntity player);
 
     @Inject(method = "clickSlot", at = @At("HEAD"), cancellable = true)
-    public void swap(int syncId, int slotId, int clickData, SlotActionType actionType, PlayerEntity player, CallbackInfoReturnable<ItemStack> cir)
+    public void swap(int syncId, int slotId, int button, SlotActionType actionType, PlayerEntity player, CallbackInfo ci)
     {
         if (slotId >= 0)
         {
@@ -31,12 +31,12 @@ public abstract class ClientPlayerInteractionManagerMixin
             if (actionType == SlotActionType.QUICK_MOVE && itemStack.getItem() instanceof Wearable)
             {
                 int equipmentSlotId = 8 - MobEntity.getPreferredEquipmentSlot(itemStack).getEntitySlotId();
-                if (slotId != equipmentSlotId && clickData == 1 && player.currentScreenHandler.getSlot(equipmentSlotId).getStack().getItem() instanceof Wearable)
+                if (slotId != equipmentSlotId && button == 1 && player.currentScreenHandler.getSlot(equipmentSlotId).getStack().getItem() instanceof Wearable)
                 {
                     clickSlot(syncId, slotId, 0, SlotActionType.PICKUP, player);
                     clickSlot(syncId, equipmentSlotId, 0, SlotActionType.PICKUP, player);
                     clickSlot(syncId, slotId, 0, SlotActionType.PICKUP, player);
-                    cir.cancel();
+                    ci.cancel();
                 }
             }
         }

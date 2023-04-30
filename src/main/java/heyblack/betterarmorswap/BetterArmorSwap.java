@@ -1,5 +1,7 @@
 package heyblack.betterarmorswap;
 
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -10,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.c2s.play.ClickSlotC2SPacket;
+import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -24,13 +27,17 @@ public class BetterArmorSwap
         ItemStack itemStack2 = user.getEquippedStack(equipmentSlot);
         if (!itemStack2.isEmpty())
         {
+            Int2ObjectMap<ItemStack> int2ObjectMap = new Int2ObjectOpenHashMap();
+
             ClickSlotC2SPacket packet = new ClickSlotC2SPacket
             (
                 user.currentScreenHandler.syncId,
-                8 - equipmentSlot.getEntitySlotId(), user.inventory.selectedSlot,
+                user.currentScreenHandler.getRevision(),
+                8 - equipmentSlot.getEntitySlotId(),
+                user.getInventory().selectedSlot,
                 SlotActionType.SWAP,
                 itemStack,
-                user.currentScreenHandler.getNextActionId(user.inventory)
+                int2ObjectMap
             );
             MinecraftClient.getInstance().getNetworkHandler().sendPacket(packet);
             onEquipStack(itemStack, user);
