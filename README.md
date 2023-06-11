@@ -10,7 +10,7 @@ Minecraft 1.19.4 added the ability to swap armor / elytra in hotbar, why don't w
 
 Using this mod, you can not only swap the armor in your hotbar, but also swap them in your inventory by shift right-clicking.
 
-The hotbar swap is only for version below 1.19.4 since it is a official feature after that version, but the inventory swap work for 1.19.4 as well!
+The hotbar swap is only for version below 1.19.4 since it is a official feature after that version, but the inventory swap work for 1.19.4+ as well!
 
 ## ScreenShots
 
